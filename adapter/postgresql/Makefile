@@ -42,3 +42,6 @@ test-extended:
 	parallel $(PARALLEL_FLAGS) \
 		"POSTGRES_VERSION={} DB_PORT=\$$((5432+{#})) $(MAKE) server-up test server-down" ::: \
 		$(POSTGRES_SUPPORTED)
+
+db/login:
+	docker exec -u $(DB_USERNAME) -it admin /bin/bash -c "PGPASSWORD=upperio//s3cr37 psql -d admin -U upperio_user"

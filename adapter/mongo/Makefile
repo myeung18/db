@@ -41,3 +41,6 @@ test-extended:
 	parallel $(PARALLEL_FLAGS) \
 		"MONGO_VERSION={} DB_PORT=\$$((27017+{#})) $(MAKE) server-up test server-down" ::: \
 		$(MONGO_SUPPORTED)
+
+db/login:
+	docker exec -u $(DB_USERNAME) -it admin /bin/bash -c "PGPASSWORD=upperio//s3cr37 psql -d admin -U upperio_user"
