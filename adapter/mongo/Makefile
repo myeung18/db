@@ -43,4 +43,7 @@ test-extended:
 		$(MONGO_SUPPORTED)
 
 db/login:
-	docker exec -u $(DB_USERNAME) -it admin /bin/bash -c "PGPASSWORD=upperio//s3cr37 psql -d admin -U upperio_user"
+	docker exec -u $(DB_USERNAME) -it mongodb-1 /bin/bash -c "PGPASSWORD=upperio//s3cr37 psql -d admin -U upperio_user"
+
+db/execin:
+	docker exec -it mongodb-1 /bin/bash  -c mongo

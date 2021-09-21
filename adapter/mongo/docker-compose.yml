@@ -3,6 +3,7 @@ version: '3'
 services:
 
   server:
+    container_name: mongodb-1
     image: mongo:${MONGO_VERSION:-3}
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME:-upperio_user}
